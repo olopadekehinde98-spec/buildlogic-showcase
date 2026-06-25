@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PORTLINE CARGO — Global Freight & Logistics</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">PORT<span>LINE</span></div>
+  <ul class="nav-links">
+    <li>Services</li>
+    <li>How It Works</li>
+    <li>Coverage</li>
+    <li>Contact</li>
+  </ul>
+  <button class="cta-small magnetic">Get a Quote</button>
+</nav>
+
+<div class="progress-rail"><div class="progress-fill"></div></div>
+
+<main>
+
+  <section class="hero split">
+    <div class="hero-text">
+      <span class="eyebrow reveal">FREIGHT · WAREHOUSING · CUSTOMS</span>
+      <h1 class="reveal">CARGO THAT<br>MOVES THE<br><span>WHOLE WORLD</span></h1>
+      <p class="reveal">Portline Cargo moves containers, freight and last-mile parcels across air, sea and road — tracked end-to-end, from Lagos to anywhere.</p>
+      <div class="hero-actions reveal">
+        <button class="cta magnetic">Get a Quote →</button>
+        <button class="cta-outline magnetic">Track a Shipment</button>
+      </div>
+    </div>
+    <div class="hero-globe">
+      <canvas id="globe-canvas"></canvas>
+    </div>
+  </section>
+
+  <section class="section services" id="services">
+    <span class="eyebrow reveal">WHAT WE MOVE</span>
+    <h2 class="reveal">ONE PARTNER FOR<br>EVERY KIND OF CARGO</h2>
+    <div class="bento">
+      <div class="bento-tile bento-large reveal">
+        <span class="num">01</span>
+        <h3>Ocean Freight</h3>
+        <p>Full and part-container shipping across major global trade routes, with customs handling included.</p>
+        <strong class="price">From $1,200 / container</strong>
+      </div>
+      <div class="bento-tile reveal">
+        <span class="num">02</span>
+        <h3>Air Freight</h3>
+        <p>Time-critical cargo delivered in days, not weeks.</p>
+        <strong class="price">From $4.50/kg</strong>
+      </div>
+      <div class="bento-tile reveal">
+        <span class="num">03</span>
+        <h3>Road & Last-Mile</h3>
+        <p>Door-to-door delivery within Nigeria and across borders.</p>
+        <strong class="price">From ₦8,000</strong>
+      </div>
+      <div class="bento-tile bento-wide reveal">
+        <span class="num">04</span>
+        <h3>Warehousing & Fulfillment</h3>
+        <p>Bonded and general storage with pick-pack-ship integration for e-commerce sellers.</p>
+        <strong class="price">From ₦60,000/mo</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process" id="how-it-works">
+    <div class="process-pin">
+      <div class="process-sticky">
+        <span class="eyebrow reveal">HOW IT WORKS</span>
+        <h2 class="reveal">FROM PICKUP<br>TO PORT TO DOORSTEP</h2>
+      </div>
+      <div class="process-steps">
+        <div class="proc-step">
+          <span class="proc-num">01</span>
+          <h3>Book & Quote</h3>
+          <p>Tell us what you're shipping and where — get a fixed quote within the hour, no hidden fees.</p>
+        </div>
+        <div class="proc-step">
+          <span class="proc-num">02</span>
+          <h3>Pickup & Documentation</h3>
+          <p>We collect your cargo and handle all export paperwork and customs declarations.</p>
+        </div>
+        <div class="proc-step">
+          <span class="proc-num">03</span>
+          <h3>In Transit, Tracked Live</h3>
+          <p>Real-time tracking by sea, air or road — you always know exactly where your cargo is.</p>
+        </div>
+        <div class="proc-step">
+          <span class="proc-num">04</span>
+          <h3>Customs & Delivery</h3>
+          <p>We clear customs on arrival and deliver straight to your door or warehouse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section coverage" id="coverage">
+    <span class="eyebrow reveal">OUR COVERAGE</span>
+    <h2 class="reveal">SHIPPING FROM<br>LAGOS TO THE WORLD</h2>
+    <div class="map-wrap reveal">
+      <svg viewBox="0 0 800 400" class="route-map">
+        <path d="M120 220 Q 300 80, 420 150 T 680 90" class="map-route" />
+        <circle cx="120" cy="220" r="7" class="map-pin map-pin-origin" />
+        <circle cx="420" cy="150" r="6" class="map-pin" />
+        <circle cx="680" cy="90" r="6" class="map-pin" />
+      </svg>
+      <div class="map-label label-lagos" style="left:10%; top:58%;">Lagos (Hub)</div>
+      <div class="map-label" style="left:50%; top:36%;">Rotterdam</div>
+      <div class="map-label" style="left:83%; top:20%;">Shanghai</div>
+    </div>
+    <div class="coverage-stats">
+      <div class="stat reveal"><strong>45+</strong><span>Countries Served</span></div>
+      <div class="stat reveal"><strong>12</strong><span>Port Partnerships</span></div>
+      <div class="stat reveal"><strong>99.2%</strong><span>On-Time Clearance</span></div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <span class="eyebrow reveal">GET A QUOTE</span>
+    <h2 class="reveal">READY TO SHIP<br><span>YOUR NEXT LOAD?</span></h2>
+    <p class="reveal">Tell us your cargo type, origin and destination — we'll send a fixed quote within the hour.</p>
+    <form class="contact-form reveal" autocomplete="off">
+      <input type="text" placeholder="Company name" required>
+      <input type="tel" placeholder="Phone number" required>
+      <select required>
+        <option value="" disabled selected>Cargo type</option>
+        <option>Ocean Freight</option>
+        <option>Air Freight</option>
+        <option>Road & Last-Mile</option>
+        <option>Warehousing</option>
+      </select>
+      <button type="submit" class="cta magnetic">Request a Quote →</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 Portline Cargo — Global Freight & Logistics, Lagos, Nigeria.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
