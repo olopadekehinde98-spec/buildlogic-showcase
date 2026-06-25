@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMBER & OAK — Modern Nigerian Kitchen</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="bg" class="embers-canvas"></canvas>
+
+<nav class="nav">
+  <div class="logo">EMBER<span>&</span>OAK</div>
+  <ul class="nav-links">
+    <li>Menu</li>
+    <li>About</li>
+    <li>Gallery</li>
+    <li>Contact</li>
+  </ul>
+  <button class="cta-small">Reserve a Table</button>
+</nav>
+
+<div class="progress-rail"><div class="progress-fill"></div></div>
+
+<main>
+
+  <section class="hero">
+    <span class="eyebrow reveal">LEKKI · LAGOS</span>
+    <h1 class="reveal">FIRE-COOKED<br>FLAVORS,<br><span>MODERN TABLE</span></h1>
+    <p class="reveal">Ember & Oak reimagines Nigerian classics with open-flame cooking, local ingredients and a room built for long dinners.</p>
+    <div class="hero-actions reveal">
+      <button class="cta">View Menu →</button>
+      <button class="cta-outline">Book a Table</button>
+    </div>
+    <div class="scroll-hint reveal">Scroll <span>↓</span></div>
+  </section>
+
+  <section class="section menu" id="menu">
+    <span class="eyebrow reveal">THE MENU</span>
+    <h2 class="reveal">FROM THE GRILL<br>TO YOUR TABLE</h2>
+    <div class="menu-grid">
+      <div class="menu-col reveal">
+        <h3>Starters</h3>
+        <div class="menu-item"><span>Suya Skewers</span><span class="dots"></span><strong>₦4,500</strong></div>
+        <div class="menu-item"><span>Asun Lettuce Cups</span><span class="dots"></span><strong>₦5,000</strong></div>
+        <div class="menu-item"><span>Grilled Plantain & Pepper</span><span class="dots"></span><strong>₦3,500</strong></div>
+        <div class="menu-item"><span>Smoked Fish Croquettes</span><span class="dots"></span><strong>₦5,500</strong></div>
+      </div>
+      <div class="menu-col reveal">
+        <h3>Mains</h3>
+        <div class="menu-item"><span>Charcoal Jollof & Grilled Chicken</span><span class="dots"></span><strong>₦9,500</strong></div>
+        <div class="menu-item"><span>Ofada Rice & Ayamase Sauce</span><span class="dots"></span><strong>₦8,000</strong></div>
+        <div class="menu-item"><span>Whole Grilled Croaker</span><span class="dots"></span><strong>₦14,000</strong></div>
+        <div class="menu-item"><span>Pepper Soup Goat Meat</span><span class="dots"></span><strong>₦10,500</strong></div>
+      </div>
+      <div class="menu-col reveal">
+        <h3>Drinks & Dessert</h3>
+        <div class="menu-item"><span>Zobo Mojito</span><span class="dots"></span><strong>₦3,500</strong></div>
+        <div class="menu-item"><span>Chapman</span><span class="dots"></span><strong>₦3,000</strong></div>
+        <div class="menu-item"><span>Chin Chin Ice Cream</span><span class="dots"></span><strong>₦4,000</strong></div>
+        <div class="menu-item"><span>Puff-Puff Tower</span><span class="dots"></span><strong>₦4,500</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <span class="eyebrow reveal">OUR STORY</span>
+    <h2 class="reveal">COOKED OVER<br>REAL FIRE, ALWAYS</h2>
+    <p class="reveal lead">Every dish at Ember & Oak passes through our wood-fired grill. No shortcuts, no microwaves — just technique, patience and ingredients sourced from local farms every morning.</p>
+    <div class="stats">
+      <div class="stat reveal"><strong>2019</strong><span>Est. In Lekki</span></div>
+      <div class="stat reveal"><strong>40+</strong><span>Dishes On Menu</span></div>
+      <div class="stat reveal"><strong>4.8</strong><span>Google Rating</span></div>
+    </div>
+  </section>
+
+  <section class="section gallery" id="gallery">
+    <span class="eyebrow reveal">GALLERY</span>
+    <h2 class="reveal">A LOOK INSIDE</h2>
+    <div class="dish-wheel-wrap">
+      <div class="dish-wheel">
+        <div class="dish-slot"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&h=400&fit=crop" alt="Grilled dish" loading="lazy"></div>
+        <div class="dish-slot"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=400&h=400&fit=crop" alt="Plated meal" loading="lazy"></div>
+        <div class="dish-slot"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=400&h=400&fit=crop" alt="Restaurant interior" loading="lazy"></div>
+        <div class="dish-slot"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=400&h=400&fit=crop" alt="Drinks" loading="lazy"></div>
+        <div class="dish-slot"><img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?q=80&w=400&h=400&fit=crop" alt="Suya skewers" loading="lazy"></div>
+        <div class="dish-slot"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=400&h=400&fit=crop" alt="Jollof rice" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <span class="eyebrow reveal">RESERVATIONS</span>
+    <h2 class="reveal">SAVE YOUR<br><span>TABLE TONIGHT</span></h2>
+    <p class="reveal">Walk-ins welcome, but reservations get first pick of the patio.</p>
+    <form class="contact-form reveal" autocomplete="off">
+      <input type="text" placeholder="Your name" required>
+      <input type="tel" placeholder="Phone number" required>
+      <div class="form-row">
+        <input type="date" required>
+        <input type="number" placeholder="Guests" min="1" max="20" required>
+      </div>
+      <button type="submit" class="cta">Reserve Now →</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 Ember & Oak — Lekki Phase 1, Lagos · Open Tue–Sun, 12pm–11pm.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

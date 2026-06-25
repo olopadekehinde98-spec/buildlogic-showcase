@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX MOTORS — Premium Auto Dealership</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav class="nav">
+  <div class="logo">APEX<span>MOTORS</span></div>
+  <ul class="nav-links">
+    <li>Inventory</li>
+    <li>Financing</li>
+    <li>Trade-In</li>
+    <li>Contact</li>
+  </ul>
+  <button class="cta-small">Browse Cars</button>
+</nav>
+
+<div class="progress-rail"><div class="progress-fill"></div></div>
+
+<main>
+
+  <section class="hero">
+    <span class="eyebrow reveal">LAGOS · ABUJA</span>
+    <h1 class="reveal">DRIVE WHAT<br>YOUVE<br><span>EARNED</span></h1>
+    <p class="reveal">Apex Motors sources, inspects and sells premium new and certified pre-owned vehicles with full transparency.</p>
+    <div class="hero-actions reveal">
+      <button class="cta">Browse Inventory →</button>
+      <button class="cta-outline">Get Financing</button>
+    </div>
+    <div class="scroll-hint reveal">Scroll <span>↓</span></div>
+  </section>
+
+  <section class="section services" id="services">
+    <span class="eyebrow reveal">WHY APEX</span>
+    <h2 class="reveal">CAR BUYING,<br>DONE RIGHT</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <span class="num">01</span>
+        <h3>Certified Pre-Owned</h3>
+        <p>Every vehicle passes a 120-point inspection before listing.</p>
+        <strong class="price">From ₦8,500,000</strong>
+      </div>
+      <div class="card reveal">
+        <span class="num">02</span>
+        <h3>Flexible Financing</h3>
+        <p>Bank and in-house financing options tailored to your budget.</p>
+        <strong class="price">From 15% down</strong>
+      </div>
+      <div class="card reveal">
+        <span class="num">03</span>
+        <h3>Trade-In Program</h3>
+        <p>Get a fair, fast valuation on your current vehicle.</p>
+        <strong class="price">Free Valuation</strong>
+      </div>
+      <div class="card reveal">
+        <span class="num">04</span>
+        <h3>Extended Warranty</h3>
+        <p>1–3 year warranty plans on all certified vehicles.</p>
+        <strong class="price">From ₦150,000</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gallery rail-section" id="gallery">
+    <span class="eyebrow reveal">THE SHOWROOM</span>
+    <h2 class="reveal">VEHICLES READY<br>FOR THE ROAD</h2>
+    <div class="speed-lines"></div>
+    <div class="rail-wrap">
+      <div class="rail-track">
+        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/luxury,car" alt="Showroom car" loading="lazy"></div>
+        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/suv,car" alt="SUV" loading="lazy"></div>
+        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/sedan,car" alt="Sedan" loading="lazy"></div>
+        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/car,showroom" alt="Dealership floor" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section agents" id="team">
+    <span class="eyebrow reveal">OUR TEAM</span>
+    <h2 class="reveal">SALES REPS WHO<br>DONT PRESSURE YOU</h2>
+    <div class="agent-grid">
+      <div class="agent-card reveal">
+        <div class="agent-photo"><img src="https://loremflickr.com/400/400/salesman,suit" alt="Tony Eze" loading="lazy"></div>
+        <h3>Tony Eze</h3>
+        <p>Senior Sales Consultant</p>
+      </div>
+      <div class="agent-card reveal">
+        <div class="agent-photo"><img src="https://loremflickr.com/400/400/saleswoman,suit" alt="Hadiza Bello" loading="lazy"></div>
+        <h3>Hadiza Bello</h3>
+        <p>Finance Manager</p>
+      </div>
+      <div class="agent-card reveal">
+        <div class="agent-photo"><img src="https://loremflickr.com/400/400/salesman,portrait" alt="Chuka Obi" loading="lazy"></div>
+        <h3>Chuka Obi</h3>
+        <p>Trade-In Specialist</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <span class="eyebrow reveal">GET IN TOUCH</span>
+    <h2 class="reveal">FIND YOUR<br><span>NEXT VEHICLE</span></h2>
+    <p class="reveal">Tell us your budget and preferred type — well match you with available inventory.</p>
+    <form class="contact-form reveal" autocomplete="off">
+      <input type="text" placeholder="Your name" required>
+      <input type="tel" placeholder="Phone number" required>
+      <select required>
+        <option value="" disabled selected>Interested in</option>
+        <option>New Vehicle</option>
+        <option>Certified Pre-Owned</option>
+        <option>Trade-In</option>
+        <option>Financing Info</option>
+      </select>
+      <button type="submit" class="cta">Request Info →</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 Apex Motors — Premium Auto Dealership, Lagos & Abuja, Nigeria.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRAME & LIGHT STUDIO — Photography</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="bg" class="grain-bg"></div>
+
+<nav class="nav">
+  <div class="logo">FRAME<span>&</span>LIGHT</div>
+  <ul class="nav-links">
+    <li>Services</li>
+    <li>Portfolio</li>
+    <li>Photographers</li>
+    <li>Contact</li>
+  </ul>
+  <button class="cta-small">Book a Shoot</button>
+</nav>
+
+<div class="progress-rail"><div class="progress-fill"></div></div>
+
+<main>
+
+  <section class="hero">
+    <span class="eyebrow reveal">YABA · LAGOS</span>
+    <h1 class="reveal">EVERY FRAME<br>TELLS YOUR<br><span>STORY</span></h1>
+    <p class="reveal">Frame & Light Studio shoots weddings, portraits and brand campaigns with a cinematic, editorial eye.</p>
+    <div class="hero-actions reveal">
+      <button class="cta">Book a Shoot →</button>
+      <button class="cta-outline">View Portfolio</button>
+    </div>
+    <div class="scroll-hint reveal">Scroll <span>↓</span></div>
+  </section>
+
+  <section class="section services" id="services">
+    <span class="eyebrow reveal">WHAT WE SHOOT</span>
+    <h2 class="reveal">EVERY MOMENT,<br>FRAMED PROPERLY</h2>
+    <div class="grid">
+      <div class="card reveal">
+        <span class="num">01</span>
+        <h3>Wedding Photography</h3>
+        <p>Full-day coverage with edited, print-ready galleries.</p>
+        <strong class="price">From ₦350,000</strong>
+      </div>
+      <div class="card reveal">
+        <span class="num">02</span>
+        <h3>Portrait Sessions</h3>
+        <p>Studio or outdoor portraits for individuals and families.</p>
+        <strong class="price">From ₦60,000</strong>
+      </div>
+      <div class="card reveal">
+        <span class="num">03</span>
+        <h3>Brand & Product</h3>
+        <p>Commercial photography for brands, menus and catalogs.</p>
+        <strong class="price">From ₦120,000</strong>
+      </div>
+      <div class="card reveal">
+        <span class="num">04</span>
+        <h3>Event Coverage</h3>
+        <p>Corporate events, launches and celebrations covered live.</p>
+        <strong class="price">From ₦150,000</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gallery" id="gallery">
+    <span class="eyebrow reveal">PORTFOLIO</span>
+    <h2 class="reveal">A FEW FRAMES<br>WERE PROUD OF</h2>
+    <div class="filmstrip-wrap">
+      <div class="filmstrip">
+        <div class="film-frame"><img src="https://loremflickr.com/600/450/photography,portrait" alt="Portrait shot" loading="lazy"></div>
+        <div class="film-frame"><img src="https://loremflickr.com/600/450/wedding,photography" alt="Wedding shot" loading="lazy"></div>
+        <div class="film-frame"><img src="https://loremflickr.com/600/450/studio,photoshoot" alt="Studio shoot" loading="lazy"></div>
+        <div class="film-frame"><img src="https://loremflickr.com/600/450/event,photography" alt="Event coverage" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section agents" id="team">
+    <span class="eyebrow reveal">OUR PHOTOGRAPHERS</span>
+    <h2 class="reveal">EYES BEHIND<br>THE CAMERA</h2>
+    <div class="agent-grid">
+      <div class="agent-card reveal">
+        <div class="agent-photo"><img src="https://loremflickr.com/400/400/photographer,man" alt="David Okoro" loading="lazy"></div>
+        <h3>David Okoro</h3>
+        <p>Lead Photographer</p>
+      </div>
+      <div class="agent-card reveal">
+        <div class="agent-photo"><img src="https://loremflickr.com/400/400/photographer,woman" alt="Aisha Bello" loading="lazy"></div>
+        <h3>Aisha Bello</h3>
+        <p>Portrait Specialist</p>
+      </div>
+      <div class="agent-card reveal">
+        <div class="agent-photo"><img src="https://loremflickr.com/400/400/photographer,camera" alt="Samuel Eze" loading="lazy"></div>
+        <h3>Samuel Eze</h3>
+        <p>Event Photographer</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <span class="eyebrow reveal">BOOK A SHOOT</span>
+    <h2 class="reveal">LETS CAPTURE<br><span>SOMETHING REAL</span></h2>
+    <p class="reveal">Tell us about your shoot and a photographer will respond within a day.</p>
+    <form class="contact-form reveal" autocomplete="off">
+      <input type="text" placeholder="Your name" required>
+      <input type="tel" placeholder="Phone number" required>
+      <input type="date" placeholder="Preferred date">
+      <button type="submit" class="cta">Request a Booking →</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 Frame & Light Studio — Yaba, Lagos, Nigeria.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
