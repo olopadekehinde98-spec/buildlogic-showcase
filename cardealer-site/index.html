@@ -3,134 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APEX MOTORS — Premium Auto Dealership</title>
-<link rel="stylesheet" href="style.css">
+<title>APEX MOTORS — Luxury & Exotic Cars</title>
+<meta name="description" content="Apex Motors — Lagos's home for luxury and exotic cars. Browse inventory, estimate finance, value your trade-in and book a test drive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0c;--panel:#141418;--line:#26262e;--gold:#c8a24a;--goldL:#e7c976;--text:#ece9e2;--muted:#8c8a92;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--text);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-0.5px;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.progress-rail{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;}
+.progress-fill{height:100%;width:0;background:var(--gold);}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;position:fixed;top:0;left:0;right:0;background:rgba(10,10,12,.7);backdrop-filter:blur(10px);z-index:50;}
+.logo{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:2px;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:26px;}
+.nav-links a{font-size:14px;color:#d6d4cd;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--black);padding:10px 20px;border-radius:3px;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:1px;}
+.hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;overflow:hidden;}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,12,.92),rgba(10,10,12,.5) 55%,rgba(10,10,12,.25));z-index:1;}
+.hero-inner{position:relative;z-index:2;max-width:640px;}
+.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:4px;font-size:12px;font-weight:600;margin-bottom:16px;}
+.hero h1{font-size:clamp(40px,6.5vw,74px);line-height:1.02;margin-bottom:18px;font-weight:800;}
+.hero h1 span{color:var(--gold);}
+.hero p{color:#cfcdc6;font-size:1.1rem;max-width:480px;margin-bottom:30px;}
+.btn{display:inline-block;background:var(--gold);color:var(--black);padding:15px 30px;border-radius:3px;font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:14px;transition:background .2s,transform .2s;border:none;cursor:pointer;}
+.btn:hover{background:var(--goldL);transform:translateY(-2px);}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.3);color:#fff;padding:15px 30px;border-radius:3px;font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:14px;transition:background .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.08);}
+.actions{display:flex;gap:14px;flex-wrap:wrap;}
+.section{padding:90px 0;}
+.section-head{text-align:center;margin-bottom:46px;}
+.section-head h2{font-size:clamp(28px,4vw,44px);font-weight:700;}
+.section-head p{color:var(--muted);margin-top:10px;}
+.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:38px;}
+.filters button{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 20px;border-radius:999px;font-size:13px;cursor:pointer;transition:all .2s;font-family:inherit;}
+.filters button.active,.filters button:hover{background:var(--gold);color:var(--black);border-color:var(--gold);}
+.car-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.car{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .25s,border-color .25s;}
+.car:hover{transform:translateY(-6px);border-color:var(--gold);}
+.car .ph{height:200px;overflow:hidden;position:relative;}
+.car .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.car:hover .ph img{transform:scale(1.07);}
+.car .badge{position:absolute;top:12px;left:12px;background:rgba(10,10,12,.8);color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:1px;padding:5px 11px;border-radius:3px;}
+.car .body{padding:20px 22px 24px;}
+.car h3{font-size:1.2rem;margin-bottom:4px;}
+.car .yr{color:var(--muted);font-size:13px;margin-bottom:12px;}
+.car .specs{display:flex;gap:14px;color:var(--muted);font-size:12.5px;margin-bottom:14px;flex-wrap:wrap;}
+.car .price{color:var(--gold);font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:700;}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:34px 32px;}
+.tool h3{font-size:1.4rem;margin-bottom:8px;}
+.tool .sub{color:var(--muted);font-size:14px;margin-bottom:22px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:7px;}
+.field input,.field select{width:100%;padding:12px 14px;background:#0e0e12;border:1px solid var(--line);border-radius:6px;color:var(--text);font-family:inherit;font-size:14px;}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);}
+.range-row{display:flex;align-items:center;gap:14px;}
+.range-row input[type=range]{flex:1;accent-color:var(--gold);}
+.payout{text-align:center;background:#0e0e12;border:1px solid var(--line);border-radius:10px;padding:22px;margin-top:8px;}
+.payout .big{font-family:'Sora',sans-serif;font-size:2.2rem;color:var(--gold);font-weight:800;}
+.payout .lbl{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.msg{display:none;color:var(--goldL);font-size:14px;margin-top:12px;text-align:center;}
+.msg.show{display:block;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.why{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:30px 24px;text-align:center;}
+.why .ic{font-size:1.8rem;margin-bottom:12px;}
+.why h3{font-size:1.1rem;margin-bottom:8px;}
+.why p{color:var(--muted);font-size:13.5px;}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px;}
+.rev p{color:#d6d4cd;font-style:italic;margin-bottom:14px;font-size:14.5px;}
+.rev strong{color:var(--gold);font-size:13px;}
+.stars{color:var(--gold);margin-bottom:10px;letter-spacing:2px;}
+.contact{text-align:center;}
+.contact .cbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
+.wa{background:#25D366;color:#06351a;padding:15px 28px;border-radius:3px;font-weight:600;}
+.em{border:1px solid rgba(255,255,255,.3);color:#fff;padding:15px 28px;border-radius:3px;font-weight:600;}
+.cdetails{color:var(--muted);margin-top:24px;font-size:14px;line-height:2;}
+.footer{border-top:1px solid var(--line);padding:36px 28px;text-align:center;color:#5f5e66;font-size:13px;}
+.footer .logo{display:block;margin-bottom:8px;}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+@media(max-width:860px){.nav-links{display:none;}.why-grid,.rev-grid{grid-template-columns:1fr;}.tools{grid-template-columns:1fr;}.hero h1{font-size:2.5rem;}.hero::after{background:linear-gradient(180deg,rgba(10,10,12,.55),rgba(10,10,12,.92));}.car-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.car-grid{grid-template-columns:1fr;}.why-grid{grid-template-columns:1fr 1fr;}}
+</style>
 </head>
 <body>
-
-<canvas id="bg"></canvas>
+<div class="progress-rail"><div class="progress-fill" id="prog"></div></div>
 
 <nav class="nav">
   <div class="logo">APEX<span>MOTORS</span></div>
   <ul class="nav-links">
-    <li>Inventory</li>
-    <li>Financing</li>
-    <li>Trade-In</li>
-    <li>Contact</li>
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#finance">Finance</a></li>
+    <li><a href="#tradein">Trade-In</a></li>
+    <li><a href="#testdrive">Test Drive</a></li>
   </ul>
-  <button class="cta-small">Browse Cars</button>
+  <a href="#testdrive" class="nav-cta">Book a test drive</a>
 </nav>
 
-<div class="progress-rail"><div class="progress-fill"></div></div>
-
-<main>
-
-  <section class="hero">
-    <span class="eyebrow reveal">LAGOS · ABUJA</span>
-    <h1 class="reveal">DRIVE WHAT<br>YOUVE<br><span>EARNED</span></h1>
-    <p class="reveal">Apex Motors sources, inspects and sells premium new and certified pre-owned vehicles with full transparency.</p>
-    <div class="hero-actions reveal">
-      <button class="cta">Browse Inventory →</button>
-      <button class="cta-outline">Get Financing</button>
+<section class="hero">
+  <video class="poster" autoplay muted loop playsinline poster="https://assets.mixkit.co/videos/35540/35540-thumb-360-0.jpg">
+    <source src="https://assets.mixkit.co/videos/35540/35540-720.mp4" type="video/mp4">
+  </video>
+  <div class="wrap hero-inner">
+    <p class="eyebrow reveal">Luxury &amp; Exotic Cars · Lagos</p>
+    <h1 class="reveal">Drive the <span>Exceptional</span>.</h1>
+    <p class="reveal">Apex Motors curates the finest luxury and exotic vehicles in Nigeria — fully inspected, finance-ready, and delivered to your door.</p>
+    <div class="actions reveal">
+      <a href="#inventory" class="btn">Browse inventory</a>
+      <a href="#testdrive" class="btn-ghost">Book a test drive</a>
     </div>
-    <div class="scroll-hint reveal">Scroll <span>↓</span></div>
-  </section>
+  </div>
+</section>
 
-  <section class="section services" id="services">
-    <span class="eyebrow reveal">WHY APEX</span>
-    <h2 class="reveal">CAR BUYING,<br>DONE RIGHT</h2>
-    <div class="grid">
-      <div class="card reveal">
-        <span class="num">01</span>
-        <h3>Certified Pre-Owned</h3>
-        <p>Every vehicle passes a 120-point inspection before listing.</p>
-        <strong class="price">From ₦8,500,000</strong>
-      </div>
-      <div class="card reveal">
-        <span class="num">02</span>
-        <h3>Flexible Financing</h3>
-        <p>Bank and in-house financing options tailored to your budget.</p>
-        <strong class="price">From 15% down</strong>
-      </div>
-      <div class="card reveal">
-        <span class="num">03</span>
-        <h3>Trade-In Program</h3>
-        <p>Get a fair, fast valuation on your current vehicle.</p>
-        <strong class="price">Free Valuation</strong>
-      </div>
-      <div class="card reveal">
-        <span class="num">04</span>
-        <h3>Extended Warranty</h3>
-        <p>1–3 year warranty plans on all certified vehicles.</p>
-        <strong class="price">From ₦150,000</strong>
-      </div>
+<section class="section" id="inventory">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>The Collection</h2>
+      <p>Hand-picked luxury &amp; exotic vehicles, ready for the road.</p>
     </div>
-  </section>
-
-  <section class="section gallery rail-section" id="gallery">
-    <span class="eyebrow reveal">THE SHOWROOM</span>
-    <h2 class="reveal">VEHICLES READY<br>FOR THE ROAD</h2>
-    <div class="speed-lines"></div>
-    <div class="rail-wrap">
-      <div class="rail-track">
-        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/luxury,car" alt="Showroom car" loading="lazy"></div>
-        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/suv,car" alt="SUV" loading="lazy"></div>
-        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/sedan,car" alt="Sedan" loading="lazy"></div>
-        <div class="g-img rail-img"><img src="https://loremflickr.com/600/400/car,showroom" alt="Dealership floor" loading="lazy"></div>
-      </div>
+    <div class="filters reveal" id="filters">
+      <button class="active" data-f="all">All</button>
+      <button data-f="suv">SUV</button>
+      <button data-f="sedan">Sedan</button>
+      <button data-f="sport">Sport</button>
+      <button data-f="convertible">Convertible</button>
     </div>
-  </section>
+    <div class="car-grid" id="carGrid"></div>
+  </div>
+</section>
 
-  <section class="section agents" id="team">
-    <span class="eyebrow reveal">OUR TEAM</span>
-    <h2 class="reveal">SALES REPS WHO<br>DONT PRESSURE YOU</h2>
-    <div class="agent-grid">
-      <div class="agent-card reveal">
-        <div class="agent-photo"><img src="https://loremflickr.com/400/400/salesman,suit" alt="Tony Eze" loading="lazy"></div>
-        <h3>Tony Eze</h3>
-        <p>Senior Sales Consultant</p>
+<section class="section" id="finance" style="background:#0d0d11;">
+  <div class="wrap tools">
+    <div class="tool reveal">
+      <h3>Payment Calculator</h3>
+      <p class="sub">Estimate your monthly payment in seconds.</p>
+      <div class="field"><label>Vehicle price (₦)</label><input type="number" id="pcPrice" value="85000000" min="1000000" step="500000"></div>
+      <div class="field"><label>Down payment: <span id="pcDownLbl">₦17,000,000</span></label><div class="range-row"><input type="range" id="pcDown" min="0" max="80" value="20"><span id="pcDownPct">20%</span></div></div>
+      <div class="grid2">
+        <div class="field"><label>Term (months)</label><select id="pcTerm"><option>12</option><option>24</option><option selected>36</option><option>48</option><option>60</option></select></div>
+        <div class="field"><label>Interest rate (%/yr)</label><input type="number" id="pcRate" value="14" min="0" max="40" step="0.5"></div>
       </div>
-      <div class="agent-card reveal">
-        <div class="agent-photo"><img src="https://loremflickr.com/400/400/saleswoman,suit" alt="Hadiza Bello" loading="lazy"></div>
-        <h3>Hadiza Bello</h3>
-        <p>Finance Manager</p>
-      </div>
-      <div class="agent-card reveal">
-        <div class="agent-photo"><img src="https://loremflickr.com/400/400/salesman,portrait" alt="Chuka Obi" loading="lazy"></div>
-        <h3>Chuka Obi</h3>
-        <p>Trade-In Specialist</p>
-      </div>
+      <div class="payout"><div class="big" id="pcMonthly">₦0</div><div class="lbl">Estimated / month</div></div>
     </div>
-  </section>
+    <div class="tool reveal" id="tradein">
+      <h3>Value Your Trade-In</h3>
+      <p class="sub">Tell us your car and get a free estimate within 24 hours.</p>
+      <form id="tiForm">
+        <div class="grid2">
+          <div class="field"><label>Make</label><input type="text" placeholder="e.g. Toyota" required></div>
+          <div class="field"><label>Model</label><input type="text" placeholder="e.g. Camry" required></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label>Year</label><input type="number" placeholder="2019" min="1990" max="2026" required></div>
+          <div class="field"><label>Condition</label><select required><option value="" disabled selected>Select</option><option>Excellent</option><option>Good</option><option>Fair</option></select></div>
+        </div>
+        <div class="field"><label>Phone number</label><input type="tel" placeholder="0801 234 5678" required></div>
+        <button class="btn" type="submit" style="width:100%">Get my estimate</button>
+        <p class="msg" id="tiMsg">✅ Thanks! We'll send your trade-in estimate within 24 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
 
-  <section class="section contact" id="contact">
-    <span class="eyebrow reveal">GET IN TOUCH</span>
-    <h2 class="reveal">FIND YOUR<br><span>NEXT VEHICLE</span></h2>
-    <p class="reveal">Tell us your budget and preferred type — well match you with available inventory.</p>
-    <form class="contact-form reveal" autocomplete="off">
-      <input type="text" placeholder="Your name" required>
-      <input type="tel" placeholder="Phone number" required>
-      <select required>
-        <option value="" disabled selected>Interested in</option>
-        <option>New Vehicle</option>
-        <option>Certified Pre-Owned</option>
-        <option>Trade-In</option>
-        <option>Financing Info</option>
-      </select>
-      <button type="submit" class="cta">Request Info →</button>
-    </form>
-  </section>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Why Apex</h2><p>The Apex standard on every vehicle.</p></div>
+    <div class="why-grid">
+      <div class="why reveal"><div class="ic">🔧</div><h3>150-Point Inspection</h3><p>Every car certified before it reaches the showroom floor.</p></div>
+      <div class="why reveal"><div class="ic">🛡️</div><h3>Warranty Included</h3><p>Drive away covered with our standard protection plan.</p></div>
+      <div class="why reveal"><div class="ic">💳</div><h3>Flexible Finance</h3><p>Tailored payment plans with fast in-house approval.</p></div>
+      <div class="why reveal"><div class="ic">🚗</div><h3>Door Delivery</h3><p>White-glove delivery anywhere in Lagos &amp; Abuja.</p></div>
+    </div>
+  </div>
+</section>
 
-</main>
+<section class="section" id="testdrive" style="background:#0d0d11;">
+  <div class="wrap" style="max-width:680px;">
+    <div class="section-head reveal"><h2>Book a Test Drive</h2><p>Pick a car and a time — we'll have it ready.</p></div>
+    <div class="tool reveal">
+      <form id="tdForm">
+        <div class="grid2">
+          <div class="field"><label>Full name</label><input type="text" required></div>
+          <div class="field"><label>Phone</label><input type="tel" required></div>
+        </div>
+        <div class="field"><label>Vehicle of interest</label><select id="tdCar" required></select></div>
+        <div class="grid2">
+          <div class="field"><label>Preferred date</label><input type="date" required></div>
+          <div class="field"><label>Time</label><select required><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+        </div>
+        <button class="btn" type="submit" style="width:100%">Confirm test drive</button>
+        <p class="msg" id="tdMsg">✅ Booked! We'll text you to confirm your test drive shortly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>What Clients Say</h2></div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Found my dream Range Rover and the finance was sorted in two days. Seamless."</p><strong>— Tunde A., Lekki</strong></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"No pressure, just honest service. They delivered the car to my office spotless."</p><strong>— Amaka O., Abuja</strong></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"The trade-in valuation was fair and fast. Best dealership experience in Lagos."</p><strong>— Kunle B., VI</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact" style="background:#0d0d11;">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Visit the Showroom</h2><p>Speak to our team or schedule a private viewing.</p></div>
+    <div class="cbtns reveal">
+      <a class="wa" href="https://wa.me/2347041389971?text=Hi%20Apex%20Motors%2C%20I%27m%20interested%20in%20a%20vehicle" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="em" href="mailto:buildlogicwebstudio@gmail.com">Email us</a>
+    </div>
+    <p class="cdetails reveal">📍 Plot 12, Adeola Odeku Street, Victoria Island, Lagos<br>📞 +234 704 138 9971 · 🕒 Mon–Sat, 9am – 7pm</p>
+  </div>
+</section>
 
 <footer class="footer">
-  <p>© 2026 Apex Motors — Premium Auto Dealership, Lagos & Abuja, Nigeria.</p>
+  <span class="logo">APEX<span style="color:var(--gold)">MOTORS</span></span>
+  © 2026 Apex Motors · Luxury &amp; Exotic Cars · Victoria Island, Lagos
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="script.js"></script>
+<script>
+const PX=id=>`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=700&h=480&fit=crop`;
+const CARS=[
+ {n:"Range Rover Autobiography",y:2023,cat:"suv",mi:"12,000 km",fuel:"Petrol",tr:"Auto",price:"₦185,000,000",img:PX(9018708),badge:"SUV"},
+ {n:"Mercedes-AMG GT",y:2022,cat:"sport",mi:"8,400 km",fuel:"Petrol",tr:"Auto",price:"₦210,000,000",img:PX(19240616),badge:"Sport"},
+ {n:"BMW M4 Competition",y:2023,cat:"sport",mi:"6,200 km",fuel:"Petrol",tr:"Auto",price:"₦168,000,000",img:PX(15054213),badge:"Sport"},
+ {n:"Porsche 911 Carrera",y:2022,cat:"sport",mi:"9,800 km",fuel:"Petrol",tr:"PDK",price:"₦175,000,000",img:PX(14667452),badge:"Sport"},
+ {n:"Lexus LX 600",y:2023,cat:"suv",mi:"15,000 km",fuel:"Petrol",tr:"Auto",price:"₦155,000,000",img:PX(30509012),badge:"SUV"},
+ {n:"Bentley Continental GT",y:2021,cat:"convertible",mi:"18,500 km",fuel:"Petrol",tr:"Auto",price:"₦240,000,000",img:PX(12418654),badge:"Convertible"},
+ {n:"Mercedes-AMG C63",y:2023,cat:"sedan",mi:"10,200 km",fuel:"Petrol",tr:"Auto",price:"₦142,000,000",img:PX(20495144),badge:"Sedan"},
+ {n:"Audi RS7 Sportback",y:2022,cat:"sport",mi:"11,000 km",fuel:"Petrol",tr:"Auto",price:"₦158,000,000",img:PX(17081564),badge:"Sport"},
+ {n:"Rolls-Royce Ghost",y:2021,cat:"sedan",mi:"14,800 km",fuel:"Petrol",tr:"Auto",price:"₦420,000,000",img:PX(18412480),badge:"Sedan"},
+ {n:"Lamborghini Huracán",y:2022,cat:"sport",mi:"5,100 km",fuel:"Petrol",tr:"Auto",price:"₦390,000,000",img:PX(19099035),badge:"Sport"},
+ {n:"Aston Martin Vantage",y:2023,cat:"sport",mi:"7,600 km",fuel:"Petrol",tr:"Auto",price:"₦265,000,000",img:PX(9145483),badge:"Sport"},
+ {n:"Ferrari Roma",y:2022,cat:"convertible",mi:"4,300 km",fuel:"Petrol",tr:"Auto",price:"₦410,000,000",img:PX(12351517),badge:"Convertible"}
+];
+const grid=document.getElementById('carGrid');
+function render(f){
+  grid.innerHTML=CARS.filter(c=>f==='all'||c.cat===f).map(c=>`
+    <div class="car reveal in">
+      <div class="ph"><span class="badge">${c.badge}</span><img src="${c.img}" alt="${c.n}" loading="lazy"></div>
+      <div class="body"><h3>${c.n}</h3><div class="yr">${c.y} · ${c.mi}</div>
+      <div class="specs"><span>${c.fuel}</span><span>${c.tr}</span><span>${c.y}</span></div>
+      <div class="price">${c.price}</div></div>
+    </div>`).join('');
+}
+render('all');
+document.querySelectorAll('#filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');render(b.dataset.f);
+}));
+document.getElementById('tdCar').innerHTML='<option value="" disabled selected>Select a vehicle</option>'+CARS.map(c=>`<option>${c.n}</option>`).join('');
+
+const fmt=n=>'₦'+Math.round(n).toLocaleString();
+function calc(){
+  const price=+document.getElementById('pcPrice').value||0;
+  const pct=+document.getElementById('pcDown').value;
+  const down=price*pct/100;
+  const term=+document.getElementById('pcTerm').value;
+  const rate=(+document.getElementById('pcRate').value)/100/12;
+  const principal=price-down;
+  const m=rate>0?principal*rate/(1-Math.pow(1+rate,-term)):principal/term;
+  document.getElementById('pcDownLbl').textContent=fmt(down);
+  document.getElementById('pcDownPct').textContent=pct+'%';
+  document.getElementById('pcMonthly').textContent=fmt(m);
+}
+['pcPrice','pcDown','pcTerm','pcRate'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
+calc();
+
+function handle(formId,msgId){document.getElementById(formId).addEventListener('submit',e=>{e.preventDefault();document.getElementById(msgId).classList.add('show');e.target.querySelector('button').textContent='Sent ✓';});}
+handle('tiForm','tiMsg');handle('tdForm','tdMsg');
+
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const prog=document.getElementById('prog');addEventListener('scroll',()=>{const s=scrollY,mx=document.documentElement.scrollHeight-innerHeight;prog.style.width=(s/mx*100)+'%';});
+</script>
 </body>
 </html>
