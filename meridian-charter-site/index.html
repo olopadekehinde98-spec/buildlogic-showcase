@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERIDIAN — Private Yacht & Jet Charter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#01111f;--deepD:#000a14;--sea:#0d5c7a;--seaL:#4fd1e8;--sand:#e9dcc4;--text:#eaf3f6;--muted:#7f9aa8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--deep);color:var(--text);overflow-x:hidden;}
+h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.5px;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 30px;}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 30px;position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(1,17,31,.55);backdrop-filter:blur(8px);}
+.logo{font-weight:800;letter-spacing:3px;font-size:1.2rem;}
+.logo span{color:var(--seaL);}
+.nav-cta{border:1px solid rgba(255,255,255,.3);padding:10px 20px;border-radius:2px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+#seaCanvas{position:absolute;inset:0;width:100%;height:100%;}
+.hero-inner{position:relative;z-index:2;max-width:700px;padding:0 24px;}
+.eyebrow{color:var(--seaL);text-transform:uppercase;letter-spacing:5px;font-size:12px;font-weight:600;margin-bottom:18px;text-shadow:0 2px 12px rgba(0,0,0,.6);}
+.hero h1{font-size:clamp(38px,7vw,78px);line-height:1.02;margin-bottom:20px;font-weight:800;text-shadow:0 4px 30px rgba(0,0,0,.5);}
+.hero h1 span{color:var(--seaL);}
+.hero p{color:#cfe4ea;font-size:1.1rem;max-width:520px;margin:0 auto 30px;text-shadow:0 2px 10px rgba(0,0,0,.5);}
+.btn{background:var(--seaL);color:var(--deepD);padding:15px 32px;border-radius:2px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:14px;display:inline-block;transition:transform .2s;}
+.btn:hover{transform:translateY(-3px);}
+.section{padding:100px 0;}
+.section-head{text-align:center;margin-bottom:50px;}
+.section-head h2{font-size:clamp(28px,4vw,44px);}
+.section-head p{color:var(--muted);margin-top:10px;}
+/* fleet horizontal drag */
+.fleet-track{display:flex;gap:24px;overflow-x:auto;padding:10px 30px 30px;scroll-snap-type:x mandatory;cursor:grab;scrollbar-width:none;}
+.fleet-track::-webkit-scrollbar{display:none;}
+.fleet-track.dragging{cursor:grabbing;}
+.vessel{min-width:340px;scroll-snap-align:start;background:#04202f;border:1px solid #123443;border-radius:14px;overflow:hidden;user-select:none;}
+.vessel img{width:100%;height:220px;object-fit:cover;display:block;pointer-events:none;}
+.vessel .body{padding:22px 24px 26px;}
+.vessel .tag{font-size:11px;color:var(--seaL);text-transform:uppercase;letter-spacing:1.5px;}
+.vessel h3{font-size:1.3rem;margin:8px 0 6px;}
+.vessel p{color:var(--muted);font-size:13.5px;margin-bottom:14px;}
+.vessel .price{color:var(--seaL);font-family:'Sora',sans-serif;font-weight:700;}
+.drag-hint{text-align:center;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-top:-14px;margin-bottom:20px;}
+/* route */
+.route-wrap{position:relative;background:#04202f;border:1px solid #123443;border-radius:16px;padding:50px 40px;}
+.route-svg{width:100%;height:220px;}
+.route-svg path{fill:none;stroke:var(--seaL);stroke-width:2;stroke-dasharray:600;stroke-dashoffset:600;}
+.route-svg path.drawn{transition:stroke-dashoffset 2s ease;stroke-dashoffset:0;}
+.route-pts{display:flex;justify-content:space-between;margin-top:10px;color:var(--muted);font-size:13px;}
+/* calc */
+.calc{background:#04202f;border:1px solid #123443;border-radius:16px;padding:36px;max-width:520px;margin:0 auto;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px;}
+.field select,.field input{width:100%;padding:12px 14px;background:#01121e;border:1px solid #123443;border-radius:6px;color:var(--text);font-family:inherit;font-size:14px;}
+.calc-out{text-align:center;background:#01121e;border-radius:10px;padding:20px;margin-top:10px;}
+.calc-out .big{font-family:'Sora',sans-serif;font-size:2rem;color:var(--seaL);font-weight:700;}
+.calc-out .lbl{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px;}
+.contact{text-align:center;}
+.cbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
+.wa{background:#25D366;color:#06351a;padding:15px 28px;border-radius:2px;font-weight:600;}
+.em{border:1px solid rgba(255,255,255,.3);padding:15px 28px;border-radius:2px;font-weight:600;}
+.footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;border-top:1px solid #123443;}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+@media(max-width:700px){.vessel{min-width:280px;}.route-wrap{padding:30px 20px;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">MERI<span>DIAN</span></div>
+  <a href="#contact" class="nav-cta">Request charter</a>
+</nav>
+
+<section class="hero">
+  <canvas id="seaCanvas"></canvas>
+  <div class="hero-inner">
+    <p class="eyebrow">Private Yacht &amp; Jet Charter</p>
+    <h1>Go where the <span>map ends</span>.</h1>
+    <p>Meridian arranges private yachts and jets across West Africa and beyond — discreet, on your schedule, no compromises.</p>
+    <a href="#fleet" class="btn">Explore the fleet</a>
+  </div>
+</section>
+
+<section class="section" id="fleet">
+  <div class="wrap section-head reveal"><h2>The Fleet</h2><p>Drag to explore.</p></div>
+  <p class="drag-hint">← drag to browse →</p>
+  <div class="fleet-track" id="fleetTrack">
+    <div class="vessel"><img src="https://images.pexels.com/photos/42091/pexels-photo-42091.jpeg?auto=compress&cs=tinysrgb&w=500"><div class="body"><span class="tag">Motor Yacht</span><h3>The Serenity 88</h3><p>Sleeps 8 · Full crew · Sun deck &amp; jacuzzi</p><div class="price">from ₦4,800,000 / day</div></div></div>
+    <div class="vessel"><img src="https://images.pexels.com/photos/42092/pexels-photo-42092.jpeg?auto=compress&cs=tinysrgb&w=500"><div class="body"><span class="tag">Motor Yacht</span><h3>Windward 62</h3><p>Sleeps 6 · Classic lines · Snorkel gear incl.</p><div class="price">from ₦2,600,000 / day</div></div></div>
+    <div class="vessel"><img src="https://images.pexels.com/photos/5778470/pexels-photo-5778470.jpeg?auto=compress&cs=tinysrgb&w=500"><div class="body"><span class="tag">Private Jet</span><h3>Citation Latitude</h3><p>8 seats · 5,000km range · Cabin crew</p><div class="price">from ₦9,200,000 / trip</div></div></div>
+    <div class="vessel"><img src="https://images.pexels.com/photos/31371794/pexels-photo-31371794.jpeg?auto=compress&cs=tinysrgb&w=500"><div class="body"><span class="tag">Superyacht</span><h3>Horizon 50</h3><p>Sleeps 10 · Stability at sea · Family-friendly</p><div class="price">from ₦3,100,000 / day</div></div></div>
+    <div class="vessel"><img src="https://images.pexels.com/photos/9928839/pexels-photo-9928839.jpeg?auto=compress&cs=tinysrgb&w=500"><div class="body"><span class="tag">Superyacht</span><h3>Meridian One</h3><p>Sleeps 12 · Helipad · Full concierge crew</p><div class="price">from ₦12,500,000 / day</div></div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Plan Your Route</h2><p>Every charter, mapped before you sail.</p></div>
+    <div class="route-wrap reveal">
+      <svg class="route-svg" viewBox="0 0 600 220" id="routeSvg">
+        <path id="routePath" d="M40,180 C150,40 300,200 560,60"></path>
+        <circle cx="40" cy="180" r="6" fill="#4fd1e8"/>
+        <circle cx="560" cy="60" r="6" fill="#4fd1e8"/>
+      </svg>
+      <div class="route-pts"><span>Lagos, Nigeria</span><span>Zanzibar, Tanzania</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Estimate Your Charter</h2></div>
+    <div class="calc reveal">
+      <div class="field"><label>Vessel type</label><select id="calcType"><option value="2600000">Sailing Yacht</option><option value="4800000">Motor Yacht</option><option value="3100000">Catamaran</option><option value="12500000">Superyacht</option></select></div>
+      <div class="field"><label>Days</label><input type="number" id="calcDays" value="3" min="1" max="30"></div>
+      <div class="field"><label>Guests</label><input type="number" id="calcGuests" value="4" min="1" max="20"></div>
+      <div class="calc-out"><div class="big" id="calcTotal">₦0</div><div class="lbl">Estimated total</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Request a Charter</h2><p>Our concierge replies within 2 hours.</p></div>
+    <div class="cbtns reveal">
+      <a class="wa" href="https://wa.me/2347041389971?text=Hi%20Meridian%2C%20I%27d%20like%20to%20enquire%20about%20a%20charter" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="em" href="mailto:buildlogicwebstudio@gmail.com">Email concierge</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">© 2026 Meridian Charter · Lagos, Nigeria</footer>
+
+<script>
+// lightweight canvas water shader-ish effect (no three.js needed for perf)
+const canvas=document.getElementById('seaCanvas');
+const ctx=canvas.getContext('2d');
+let w,h,t=0;
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+resize();addEventListener('resize',resize);
+function draw(){
+  t+=0.008;
+  const grad=ctx.createLinearGradient(0,0,0,h);
+  grad.addColorStop(0,'#01111f');grad.addColorStop(1,'#062f42');
+  ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+  const rows=14;
+  for(let r=0;r<rows;r++){
+    const y=h*0.45+r*(h*0.5/rows);
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    for(let x=0;x<=w;x+=20){
+      const wave=Math.sin(x*0.01+t*2+r*0.5)*6+Math.sin(x*0.02+t*1.3+r)*4;
+      ctx.lineTo(x,y+wave);
+    }
+    ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.closePath();
+    ctx.fillStyle=`rgba(79,209,232,${0.02+r*0.006})`;
+    ctx.fill();
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+// fleet drag
+const track=document.getElementById('fleetTrack');
+let isDown=false,startX,scrollLeft;
+track.addEventListener('mousedown',e=>{isDown=true;track.classList.add('dragging');startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft;});
+track.addEventListener('mouseleave',()=>{isDown=false;track.classList.remove('dragging');});
+track.addEventListener('mouseup',()=>{isDown=false;track.classList.remove('dragging');});
+track.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-track.offsetLeft;track.scrollLeft=scrollLeft-(x-startX)*1.5;});
+
+// route draw on scroll into view
+const routePath=document.getElementById('routePath');
+const routeIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){routePath.classList.add('drawn');routeIO.unobserve(e.target);}}),{threshold:.4});
+routeIO.observe(document.getElementById('routeSvg'));
+
+// calculator
+function calc(){
+  const rate=+document.getElementById('calcType').value;
+  const days=+document.getElementById('calcDays').value||1;
+  const guests=+document.getElementById('calcGuests').value||1;
+  const total=rate*days + Math.max(0,guests-4)*80000*days;
+  document.getElementById('calcTotal').textContent='₦'+Math.round(total).toLocaleString();
+}
+['calcType','calcDays','calcGuests'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
+calc();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

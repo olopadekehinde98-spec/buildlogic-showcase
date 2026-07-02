@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORMÉ — Interior Design Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--stone:#efece5;--clay:#c98b5e;--charcoal:#2b2723;--line:#ded8cc;--muted:#8a8375;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--stone);color:var(--charcoal);overflow-x:hidden;}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:26px 32px;position:sticky;top:0;background:rgba(239,236,229,.85);backdrop-filter:blur(8px);z-index:50;}
+.logo{font-family:'Fraunces',serif;font-size:1.5rem;letter-spacing:1px;}
+.nav a.cta{border-bottom:1px solid var(--charcoal);padding-bottom:2px;font-size:13px;}
+.hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;padding:60px 0;}
+.hero-inner{max-width:640px;}
+.eyebrow{color:var(--clay);text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:600;margin-bottom:18px;}
+.hero h1{font-size:clamp(40px,6.5vw,72px);line-height:1.05;margin-bottom:22px;}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:480px;margin-bottom:30px;}
+.btn{display:inline-block;background:var(--charcoal);color:var(--stone);padding:15px 30px;font-size:14px;border-radius:2px;transition:background .2s;}
+.btn:hover{background:var(--clay);}
+.section{padding:96px 0;}
+.section-head{margin-bottom:48px;}
+.section-head.center{text-align:center;}
+.section-head h2{font-size:clamp(28px,4vw,42px);}
+.section-head p{color:var(--muted);margin-top:10px;}
+/* before/after slider */
+.ba-wrap{position:relative;max-width:800px;margin:0 auto;aspect-ratio:16/10;border-radius:6px;overflow:hidden;cursor:ew-resize;user-select:none;box-shadow:0 30px 70px rgba(43,39,35,.18);}
+.ba-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+.ba-after{clip-path:inset(0 0 0 50%);}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);pointer-events:none;}
+.ba-handle::after{content:'⇔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+.ba-label{position:absolute;bottom:16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(43,39,35,.75);color:#fff;padding:6px 12px;border-radius:2px;}
+.ba-label.before{left:16px;}
+.ba-label.after{right:16px;}
+.ba-hint{text-align:center;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-top:18px;}
+/* room flip cards */
+.room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;perspective:1400px;}
+.room-card{aspect-ratio:3/4;position:relative;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,.2,.2,1);cursor:pointer;}
+.room-card.flipped{transform:rotateY(180deg);}
+.room-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;overflow:hidden;}
+.room-face.front img{width:100%;height:100%;object-fit:cover;}
+.room-face.front .tag{position:absolute;bottom:18px;left:18px;color:#fff;font-family:'Fraunces',serif;font-size:1.3rem;text-shadow:0 2px 10px rgba(0,0,0,.4);}
+.room-face.front::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 50%);}
+.room-face.back{transform:rotateY(180deg);background:var(--charcoal);color:var(--stone);padding:26px;display:flex;flex-direction:column;justify-content:center;}
+.room-face.back h3{font-size:1.2rem;margin-bottom:10px;color:var(--clay);}
+.room-face.back p{font-size:13.5px;color:#c9c3b8;line-height:1.7;}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step{background:#fff;border:1px solid var(--line);border-radius:8px;padding:32px 26px;}
+.step .num{font-family:'Fraunces',serif;font-size:2rem;color:var(--clay);}
+.step h3{font-size:1.2rem;margin:10px 0 8px;}
+.step p{color:var(--muted);font-size:14px;}
+.contact{text-align:center;}
+.cbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
+.wa{background:#25D366;color:#06351a;padding:15px 28px;border-radius:2px;font-weight:600;}
+.em{border:1px solid var(--charcoal);padding:15px 28px;border-radius:2px;font-weight:600;}
+.footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+@media(max-width:820px){.room-grid,.steps{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">FORMÉ</div>
+  <a href="#contact" class="cta">Book a consult</a>
+</nav>
+
+<section class="hero wrap">
+  <div class="hero-inner">
+    <p class="eyebrow reveal">Interior Design Studio · Lagos</p>
+    <h1 class="reveal">Spaces that feel like they were always yours.</h1>
+    <p class="reveal">Formé designs homes and offices with warmth, restraint, and a sense of permanence — drag the slider below to see the difference.</p>
+    <a href="#rooms" class="btn reveal">See our work</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap section-head center reveal"><h2>Before &amp; After</h2><p>Drag to reveal the transformation.</p></div>
+  <div class="ba-wrap" id="baWrap">
+    <img class="ba-before" src="https://images.pexels.com/photos/6636258/pexels-photo-6636258.jpeg?auto=compress&cs=tinysrgb&w=900">
+    <img class="ba-after" id="baAfter" src="https://images.pexels.com/photos/6316065/pexels-photo-6316065.jpeg?auto=compress&cs=tinysrgb&w=900">
+    <div class="ba-handle" id="baHandle"></div>
+    <span class="ba-label before">Before</span>
+    <span class="ba-label after">After</span>
+  </div>
+  <p class="ba-hint">← drag →</p>
+</section>
+
+<section class="section" id="rooms">
+  <div class="wrap section-head center reveal"><h2>Recent Rooms</h2><p>Tap a room to see the design brief.</p></div>
+  <div class="wrap room-grid">
+    <div class="room-card reveal" data-room="1">
+      <div class="room-face front"><img src="https://images.pexels.com/photos/7061662/pexels-photo-7061662.jpeg?auto=compress&cs=tinysrgb&w=500"><span class="tag">Living Room</span></div>
+      <div class="room-face back"><h3>Ikoyi Penthouse</h3><p>Warm oak tones, a custom sectional, and layered lighting to soften a formerly cold, all-white space.</p></div>
+    </div>
+    <div class="room-card reveal" data-room="2">
+      <div class="room-face front"><img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=500"><span class="tag">Kitchen</span></div>
+      <div class="room-face back"><h3>Lekki Family Home</h3><p>Matte stone counters, brass hardware, and an island built for a family that actually cooks together.</p></div>
+    </div>
+    <div class="room-card reveal" data-room="3">
+      <div class="room-face front"><img src="https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg?auto=compress&cs=tinysrgb&w=500"><span class="tag">Study</span></div>
+      <div class="room-face back"><h3>VI Executive Office</h3><p>A quiet, focused workspace with textured walls and a reading nook framed by natural light.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap section-head center reveal"><h2>How We Work</h2></div>
+  <div class="wrap steps">
+    <div class="step reveal"><span class="num">01</span><h3>Discover</h3><p>A walkthrough of your space and a candid conversation about how you actually live.</p></div>
+    <div class="step reveal"><span class="num">02</span><h3>Design</h3><p>Moodboards, 3D renders and material samples — nothing built until you love it on paper.</p></div>
+    <div class="step reveal"><span class="num">03</span><h3>Deliver</h3><p>Full project management, from contractors to the final styled photograph.</p></div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="section-head center reveal"><h2>Start Your Project</h2><p>Book a free discovery call.</p></div>
+    <div class="cbtns reveal">
+      <a class="wa" href="https://wa.me/2347041389971?text=Hi%20Form%C3%A9%2C%20I%27d%20like%20to%20book%20a%20design%20consult" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="em" href="mailto:buildlogicwebstudio@gmail.com">Email us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">© 2026 Formé Interior Design · Lagos, Nigeria</footer>
+
+<script>
+const wrap=document.getElementById('baWrap');
+const after=document.getElementById('baAfter');
+const handle=document.getElementById('baHandle');
+function setSlider(x){
+  const r=wrap.getBoundingClientRect();
+  const pct=Math.min(Math.max((x-r.left)/r.width,0),1)*100;
+  after.style.clipPath=`inset(0 0 0 ${pct}%)`;
+  handle.style.left=pct+'%';
+}
+let dragging=false;
+wrap.addEventListener('mousedown',e=>{dragging=true;setSlider(e.clientX);});
+addEventListener('mousemove',e=>{if(dragging)setSlider(e.clientX);});
+addEventListener('mouseup',()=>dragging=false);
+wrap.addEventListener('touchstart',e=>setSlider(e.touches[0].clientX));
+wrap.addEventListener('touchmove',e=>setSlider(e.touches[0].clientX));
+
+document.querySelectorAll('.room-card').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('flipped')));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

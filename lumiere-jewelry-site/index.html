@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIÈRE — Fine Jewelry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#faf6f0;--blush:#e8d4c8;--gold:#a8823f;--goldD:#7d5f2c;--ink:#241f1a;--muted:#8a7f72;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:26px 32px;position:sticky;top:0;background:rgba(250,246,240,.85);backdrop-filter:blur(8px);z-index:50;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;letter-spacing:4px;}
+.nav a.cta{border:1px solid var(--ink);padding:10px 22px;border-radius:0;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;}
+.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;}
+.eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:5px;font-size:12px;font-weight:500;margin-bottom:20px;}
+.hero h1{font-size:clamp(46px,8vw,92px);line-height:1;margin-bottom:24px;}
+.hero p{color:var(--muted);max-width:460px;margin:0 auto 34px;font-size:1.05rem;}
+.btn{display:inline-block;background:var(--ink);color:var(--cream);padding:16px 34px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s;}
+.btn:hover{background:var(--goldD);}
+/* 360 spin section */
+.spin-section{position:relative;height:340vh;}
+.spin-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--cream),var(--blush));}
+.spin-stage{width:340px;height:340px;position:relative;}
+.spin-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;box-shadow:0 40px 80px rgba(122,90,40,.25);opacity:0;transition:opacity .05s linear;}
+.spin-stage img.show{opacity:1;}
+.spin-label{margin-top:36px;text-align:center;}
+.spin-label .eyebrow{margin-bottom:8px;}
+.spin-label h2{font-size:2.2rem;}
+.spin-hint{margin-top:14px;color:var(--muted);font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+/* collection grid */
+.section{padding:100px 0;}
+.section-head{text-align:center;margin-bottom:56px;}
+.section-head h2{font-size:clamp(30px,4vw,46px);}
+.section-head p{color:var(--muted);margin-top:10px;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);}
+.piece{background:var(--cream);overflow:hidden;position:relative;}
+.piece img{width:100%;height:340px;object-fit:cover;display:block;transition:transform .6s ease;}
+.piece:hover img{transform:scale(1.08);}
+.piece .info{padding:22px 24px 28px;}
+.piece .info h3{font-size:1.4rem;margin-bottom:6px;}
+.piece .info .price{color:var(--goldD);font-size:14px;letter-spacing:.5px;}
+/* configurator */
+.config{background:var(--ink);color:var(--cream);}
+.config .section-head h2,.config .section-head p{color:var(--cream);}
+.config .section-head p{color:#c9beb0;}
+.config-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.config-preview{aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.4);}
+.config-preview img{width:100%;height:100%;object-fit:cover;transition:filter .3s;}
+.opt-group{margin-bottom:28px;}
+.opt-group label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#c9beb0;margin-bottom:12px;}
+.opt-row{display:flex;gap:10px;flex-wrap:wrap;}
+.opt{padding:11px 20px;border:1px solid rgba(250,246,240,.3);font-size:13px;cursor:pointer;transition:all .2s;background:transparent;color:var(--cream);font-family:inherit;}
+.opt.active,.opt:hover{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+.config-price{margin-top:30px;padding-top:24px;border-top:1px solid rgba(250,246,240,.2);}
+.config-price .big{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold);}
+.config-price .lbl{color:#c9beb0;font-size:12px;text-transform:uppercase;letter-spacing:1px;}
+/* contact */
+.contact{text-align:center;}
+.cbtns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+.wa{background:#25D366;color:#06351a;padding:15px 28px;font-weight:600;font-size:14px;}
+.em{border:1px solid var(--ink);padding:15px 28px;font-size:14px;}
+.footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:13px;border-top:1px solid var(--blush);}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+@media(max-width:860px){.grid{grid-template-columns:1fr 1fr;}.config-wrap{grid-template-columns:1fr;gap:36px;}}
+@media(max-width:560px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">LUMIÈRE</div>
+  <a href="#config" class="cta">Design yours</a>
+</nav>
+
+<section class="hero">
+  <p class="eyebrow reveal">Fine Jewelry · Est. Lagos</p>
+  <h1 class="reveal">Light, held<br>in gold.</h1>
+  <p class="reveal">Lumière crafts fine jewelry for people who notice detail — ethically sourced stones, hand-finished settings, made to be worn for life.</p>
+  <a href="#collection" class="btn reveal">View the collection</a>
+</section>
+
+<section class="spin-section" id="spin">
+  <div class="spin-sticky">
+    <div class="spin-stage" id="spinStage">
+      <img data-i="0" class="show" src="https://images.pexels.com/photos/5737286/pexels-photo-5737286.jpeg?auto=compress&cs=tinysrgb&w=500">
+      <img data-i="1" src="https://images.pexels.com/photos/17261921/pexels-photo-17261921.jpeg?auto=compress&cs=tinysrgb&w=500">
+      <img data-i="2" src="https://images.pexels.com/photos/9080072/pexels-photo-9080072.jpeg?auto=compress&cs=tinysrgb&w=500">
+      <img data-i="3" src="https://images.pexels.com/photos/9722363/pexels-photo-9722363.jpeg?auto=compress&cs=tinysrgb&w=500">
+      <img data-i="4" src="https://images.pexels.com/photos/10897815/pexels-photo-10897815.jpeg?auto=compress&cs=tinysrgb&w=500">
+    </div>
+    <div class="spin-label">
+      <p class="eyebrow">The Aurelia Ring</p>
+      <h2>Every angle, considered.</h2>
+      <p class="spin-hint">Scroll to rotate ↕</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="collection">
+  <div class="wrap section-head reveal">
+    <h2>The Collection</h2>
+    <p>Signature pieces, hand-finished in-house.</p>
+  </div>
+  <div class="grid">
+    <div class="piece reveal"><img src="https://images.pexels.com/photos/5737284/pexels-photo-5737284.jpeg?auto=compress&cs=tinysrgb&w=500" alt=""><div class="info"><h3>Aurelia Ring</h3><div class="price">₦1,250,000</div></div></div>
+    <div class="piece reveal"><img src="https://images.pexels.com/photos/10215179/pexels-photo-10215179.jpeg?auto=compress&cs=tinysrgb&w=500" alt=""><div class="info"><h3>Solene Necklace</h3><div class="price">₦2,100,000</div></div></div>
+    <div class="piece reveal"><img src="https://images.pexels.com/photos/7541801/pexels-photo-7541801.jpeg?auto=compress&cs=tinysrgb&w=500" alt=""><div class="info"><h3>Vesper Pendant</h3><div class="price">₦890,000</div></div></div>
+    <div class="piece reveal"><img src="https://images.pexels.com/photos/5370650/pexels-photo-5370650.jpeg?auto=compress&cs=tinysrgb&w=500" alt=""><div class="info"><h3>Marielle Band</h3><div class="price">₦1,480,000</div></div></div>
+    <div class="piece reveal"><img src="https://images.pexels.com/photos/12197267/pexels-photo-12197267.jpeg?auto=compress&cs=tinysrgb&w=500" alt=""><div class="info"><h3>Ondine Pendant</h3><div class="price">₦1,020,000</div></div></div>
+    <div class="piece reveal"><img src="https://images.pexels.com/photos/9722363/pexels-photo-9722363.jpeg?auto=compress&cs=tinysrgb&w=500" alt=""><div class="info"><h3>Celeste Stack</h3><div class="price">₦760,000</div></div></div>
+  </div>
+</section>
+
+<section class="section config" id="config">
+  <div class="wrap section-head reveal"><h2>Design Yours</h2><p>Build a piece that's entirely your own.</p></div>
+  <div class="wrap config-wrap">
+    <div class="config-preview reveal"><img id="cfgImg" src="https://images.pexels.com/photos/5737286/pexels-photo-5737286.jpeg?auto=compress&cs=tinysrgb&w=600"></div>
+    <div class="reveal">
+      <div class="opt-group">
+        <label>Metal</label>
+        <div class="opt-row" id="metalOpts">
+          <button class="opt active" data-v="0">Yellow Gold</button>
+          <button class="opt" data-v="8000">White Gold</button>
+          <button class="opt" data-v="15000">Platinum</button>
+        </div>
+      </div>
+      <div class="opt-group">
+        <label>Stone</label>
+        <div class="opt-row" id="stoneOpts">
+          <button class="opt active" data-v="0">Diamond</button>
+          <button class="opt" data-v="-120000">Sapphire</button>
+          <button class="opt" data-v="-200000">Emerald</button>
+        </div>
+      </div>
+      <div class="opt-group">
+        <label>Carat</label>
+        <div class="opt-row" id="caratOpts">
+          <button class="opt active" data-v="0">0.5ct</button>
+          <button class="opt" data-v="400000">1.0ct</button>
+          <button class="opt" data-v="950000">1.5ct</button>
+        </div>
+      </div>
+      <div class="config-price">
+        <div class="big" id="cfgPrice">₦1,250,000</div>
+        <div class="lbl">Estimated price</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact">
+  <div class="wrap">
+    <div class="section-head reveal"><h2>Visit the Atelier</h2><p>By private appointment, Victoria Island.</p></div>
+    <div class="cbtns reveal">
+      <a class="wa" href="https://wa.me/2347041389971?text=Hi%20Lumi%C3%A8re%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <a class="em" href="mailto:buildlogicwebstudio@gmail.com">Email us</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">© 2026 Lumière Fine Jewelry · Victoria Island, Lagos</footer>
+
+<script>
+const frames=document.querySelectorAll('#spinStage img');
+const spinSection=document.getElementById('spin');
+addEventListener('scroll',()=>{
+  const r=spinSection.getBoundingClientRect();
+  const total=spinSection.offsetHeight-innerHeight;
+  const p=Math.min(Math.max(-r.top/total,0),1);
+  const idx=Math.min(frames.length-1,Math.floor(p*frames.length));
+  frames.forEach((f,i)=>f.classList.toggle('show',i===idx));
+});
+let base=1250000;
+const state={metal:0,stone:0,carat:0};
+function updatePrice(){
+  const t=base+state.metal+state.stone+state.carat;
+  document.getElementById('cfgPrice').textContent='₦'+t.toLocaleString();
+}
+['metalOpts','stoneOpts','caratOpts'].forEach((id,gi)=>{
+  document.getElementById(id).querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.getElementById(id).querySelectorAll('.opt').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const key=['metal','stone','carat'][gi];
+      state[key]=+btn.dataset.v;
+      updatePrice();
+    });
+  });
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
